@@ -19,4 +19,5 @@ export default async function handler(
       .create(document)
       .then(() => res.status(201).json('Video Created'));
   }
+
 }
