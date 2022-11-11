@@ -5,7 +5,9 @@ const nextConfig = {
   images: {
     domains: [
       'yt3.ggpht.com',
-      'lh3.googleusercontent.com', 'cdn.sanity.io',
+      'lh3.googleusercontent.com',
+      'cdn.sanity.io',
+      'www.dropbox.com',
     ],
   },
 };

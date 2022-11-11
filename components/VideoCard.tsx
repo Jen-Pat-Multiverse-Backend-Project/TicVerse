@@ -42,7 +42,7 @@ const VideoCard: NextPage<IProps> = ({
     }
   }, [isVideoMuted]);
 
-  if (!isShowingOnHome) {
+  if (isShowingOnHome) {
     return (
       <div>
         <Link href={`/detail/${_id}`}>
@@ -59,7 +59,7 @@ const VideoCard: NextPage<IProps> = ({
           </p>
         </div>
         <Link href={`/detail/${_id}`}>
-          <p className="mt-5 text-md text-gray-800 cursor-pointer w-210">
+          <p className="mt-5 text-md text-gray-800 cursor-pointer w-[210px]">
             {caption}
           </p>
         </Link>
