@@ -24,16 +24,17 @@ const Search = ({ videos }: { videos: Video[] }) => {
   const isVideos = !isAccounts
     ? 'border-b-2 border-black'
     : 'text-gray-400';
+
   const searchedAccounts = allUsers?.filter((user: IUser) =>
-    user.userName.toLowerCase().includes(searchTerm)
+    user.userName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div className="w-full  ">
+    <div className="w-full">
       <div className="flex gap-10 mb-10 border-b-2 border-gray-200 md:fixed z-50 bg-white w-full">
         <p
           onClick={() => setIsAccounts(true)}
-          className={`text-xl  font-semibold cursor-pointer ${accounts} mt-2`}
+          className={`text-xl font-semibold cursor-pointer ${accounts} mt-2`}
         >
           Accounts
         </p>
@@ -49,7 +50,7 @@ const Search = ({ videos }: { videos: Video[] }) => {
           {searchedAccounts.length > 0 ? (
             searchedAccounts.map((user: IUser, idx: number) => (
               <Link key={idx} href={`/profile/${user._id}`}>
-                <div className=" flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-200">
+                <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-200">
                   <div>
                     <Image
                       width={50}
@@ -82,8 +83,8 @@ const Search = ({ videos }: { videos: Video[] }) => {
       ) : (
         <div className="md:mt-16 flex flex-wrap gap-6 md:justify-start ">
           {videos.length ? (
-            videos.map((post: Video, idx: number) => (
-              <VideoCard post={post} key={idx} />
+            videos.map((video: Video, idx: number) => (
+              <VideoCard post={video} key={idx} />
             ))
           ) : (
             <NoResults text={`No Video Results for ${searchTerm}`} />
