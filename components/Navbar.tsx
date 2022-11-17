@@ -16,7 +16,7 @@ const Navbar = () => {
   const [searchValue, setSearchValue] = useState('');
   const router = useRouter();
 
-  const { userProfile, addUser, removeUser } = useAuthStore();
+  const { userProfile, addUser, removeUser } : any = useAuthStore();
 
   useEffect(() => {
     setUser(userProfile);
@@ -64,7 +64,7 @@ const Navbar = () => {
       </div>
 
       <div>
-        {userProfile ? (
+        {user ? (
           <div className="flex gap-5 md:gap-10">
             <Link href="/upload">
               <button className="border-2 px-2 md:px-4 text-md font-semibold flex items-center gap-2">
@@ -72,14 +72,14 @@ const Navbar = () => {
                 <span className="hidden md:block">Upload</span>
               </button>
             </Link>
-            {userProfile.image && (
-              <Link href={`/profile/${userProfile._id}`}>
+            {user.image && (
+              <Link href={`/profile/${user._id}`}>
                 <div>
                   <Image
                     width={40}
                     height={40}
                     className="rounded-full cursor-pointer"
-                    src={userProfile.image}
+                    src={user.image}
                     alt="profile"
                   />
                 </div>
