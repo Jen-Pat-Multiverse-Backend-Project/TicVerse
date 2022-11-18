@@ -63,6 +63,7 @@ const Detail = ({ postDetails }: IProps) => {
 
     if (userProfile) {
       if (comment) {
+        setComment(comment.trim());
         setIsPostingComment(true);
         const res = await axios.put(
           `${BASE_URL}/api/post/${post._id}`,
