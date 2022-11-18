@@ -16,7 +16,7 @@ const NoResults = ({ text }: IProps) => {
           <MdOutlineVideocamOff />
         )}{' '}
       </p>
-      s<p className="text-2xl text-center">{text}</p>
+      <p className="text-2xl text-center">{text}</p>
     </div>
   );
 };
