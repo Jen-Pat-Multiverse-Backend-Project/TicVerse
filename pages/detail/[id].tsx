@@ -77,7 +77,6 @@ const Detail = ({ postDetails }: IProps) => {
         setIsPostingComment(false);
       }
     }
-  };
 
   return (
     <>
