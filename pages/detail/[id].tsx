@@ -32,9 +32,9 @@ const Detail = ({ postDetails }: IProps) => {
   const { userProfile }: any = useAuthStore();
 
   const onVideoClick = () => {
-    if(playing) {
-      videoRef?.current?.pause()
-      setPlaying(false)
+    if (playing) {
+      videoRef?.current?.pause();
+      setPlaying(false);
     } else {
       videoRef?.current?.play();
       setPlaying(true);
@@ -49,7 +49,7 @@ const Detail = ({ postDetails }: IProps) => {
 
   const handleLike = async (like: boolean) => {
     if (userProfile) {
-      const {data} = await axios.put(`${BASE_URL}/api/like`, {
+      const { data } = await axios.put(`${BASE_URL}/api/like`, {
         userId: userProfile._id,
         postId: post._id,
         like,
@@ -62,21 +62,20 @@ const Detail = ({ postDetails }: IProps) => {
     e.preventDefault();
 
     if (userProfile && comment) {
+      setIsPostingComment(true);
+      const { data } = await axios.put(
+        `${BASE_URL}/api/post/${post._id}`,
+        {
+          userId: userProfile._id,
+          comment,
+        }
+      );
 
-        setIsPostingComment(true);
-        const {data} = await axios.put(
-          `${BASE_URL}/api/post/${post._id}`,
-          {
-            userId: userProfile._id,
-            comment,
-          }
-        );
-
-        setPost({ ...post, comments: data.comments });
-        setComment('');
-        setIsPostingComment(false);
-      }
+      setPost({ ...post, comments: data.comments });
+      setComment('');
+      setIsPostingComment(false);
     }
+  };
 
   return (
     <>
@@ -176,11 +175,11 @@ const Detail = ({ postDetails }: IProps) => {
 };
 
 export const getServerSideProps = async ({
-  params: { id }
+  params: { id },
 }: {
   params: { id: string };
 }) => {
-  const {data} = await axios.get(`${BASE_URL}/api/post/${id}`);
+  const { data } = await axios.get(`${BASE_URL}/api/post/${id}`);
 
   return {
     props: { postDetails: data },
